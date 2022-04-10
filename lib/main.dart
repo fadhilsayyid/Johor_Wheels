@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:johor_wheels/login.dart';
+import 'package:johor_wheels/registration.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,6 +49,17 @@ class myHomePage extends StatelessWidget {
                         fontSize: 65.0),
                     textAlign: TextAlign.center,
                   ),
+                  SizedBox(
+                    height: 5.0,
+                  ),
+                  Text(
+                    'Johor Local Bus Route Finder',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 18.0),
+                    textAlign: TextAlign.center,
+                  ),
                 ],
               ),
             ),
@@ -69,7 +82,7 @@ class MyStatelessWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           ClipRRect(
-            borderRadius: BorderRadius.circular(4),
+            borderRadius: BorderRadius.circular(18.0),
             child: Stack(
               children: <Widget>[
                 Positioned.fill(
@@ -87,54 +100,77 @@ class MyStatelessWidget extends StatelessWidget {
                 SizedBox(
                   width: 350,
                   child: TextButton(
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.all(16.0),
-                      primary: Colors.white,
-                      textStyle: const TextStyle(fontSize: 20),
-                    ),
-                    onPressed: () {},
-                    child: const Text('Sign In'),
+                    child: Text("Log in",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold)),
+                    style: ButtonStyle(
+                        padding: MaterialStateProperty.all<EdgeInsets>(
+                            EdgeInsets.all(15)),
+                        foregroundColor:
+                            MaterialStateProperty.all<Color>(Colors.white),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder())),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()));
+                    },
                   ),
                 ),
               ],
             ),
           ),
           SizedBox(
-            height: 20.0,
+            height: 10.0,
           ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(4),
-            child: Stack(
-              children: <Widget>[
-                Positioned.fill(
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: <Color>[
-                          Color(0xFF7499AC),
-                          Color(0xFF2B8DAA),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 350,
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.all(16.0),
-                      primary: Colors.white,
-                      textStyle: const TextStyle(fontSize: 20),
-                    ),
-                    onPressed: () {},
-                    child: const Text('Sign Up'),
-                  ),
-                ),
+          SizedBox(
+            width: 350,
+            child: TextButton(
+              child: Text("I'm new, sign me up",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              style: ButtonStyle(
+                  padding:
+                      MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(15)),
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Color(0xFF7499AC)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(
+                            width: 3.0,
+                            color: Color(0xFF7499AC),
+                          )))),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RegisterScreen()));
+              },
+            ),
+          ),
+          SizedBox(
+            height: 10.0,
+          ),
+          RichText(
+            textAlign: TextAlign.justify,
+            text: TextSpan(
+              text: 'By logging in or registering, you agree to our ',
+              style: TextStyle(color: Colors.black, fontSize: 13.0),
+              children: <TextSpan>[
+                TextSpan(
+                    text: ' Terms of Service',
+                    style: TextStyle(color: Color(0xFF2B8DAA), fontSize: 13.0)),
+                TextSpan(
+                    text: ' and ',
+                    style: TextStyle(color: Colors.black, fontSize: 13.0)),
+                TextSpan(
+                    text: ' Privacy Policy.',
+                    style: TextStyle(color: Color(0xFF2B8DAA), fontSize: 13.0)),
               ],
             ),
           ),
           SizedBox(
-            height: 60.0,
+            height: 40.0,
           ),
         ],
       ),
