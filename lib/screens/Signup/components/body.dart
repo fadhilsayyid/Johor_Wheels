@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:johor_wheels/auth_services.dart';
 import 'package:johor_wheels/screens/Login/login_screen.dart';
 import 'package:johor_wheels/screens/Signup/components/background.dart';
 import 'package:johor_wheels/Screens/Signup/components/or_divider.dart';
@@ -8,7 +9,11 @@ import 'package:johor_wheels/components/rounded_button.dart';
 import 'package:johor_wheels/components/rounded_input_field.dart';
 import 'package:johor_wheels/components/rounded_password_field.dart';
 
+// ignore: must_be_immutable
 class Body extends StatelessWidget {
+  TextEditingController emailController = TextEditingController(text: "");
+  TextEditingController passwordController = TextEditingController(text: "");
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -21,13 +26,18 @@ class Body extends StatelessWidget {
             RoundedInputField(
               hintText: "Your Email",
               onChanged: (value) {},
+              emailController: emailController,
             ),
             RoundedPasswordField(
               onChanged: (value) {},
+              passwordController: passwordController,
             ),
             RoundedButton(
               text: "SIGNUP",
-              press: () {},
+              press: () async {
+                await AuthServices.signUp(
+                    emailController.text, passwordController.text);
+              },
             ),
             SizedBox(height: size.height * 0.03),
             AlreadyHaveAnAccountCheck(

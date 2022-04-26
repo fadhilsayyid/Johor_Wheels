@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:johor_wheels/screens/Welcome/welcome_screen.dart';
+// import 'package:johor_wheels/screens/Welcome/welcome_screen.dart';
 
 class Background extends StatelessWidget {
   final Widget child;
@@ -18,40 +18,42 @@ class Background extends StatelessWidget {
             fit: BoxFit.cover),
       ),
       padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 50.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          // IconButton(
-          //     onPressed: () {
-          //       Navigator.push(context,
-          //           MaterialPageRoute(builder: (context) => WelcomeScreen()));
-          //     },
-          //     icon: Icon(Icons.arrow_back_ios)),
-          SizedBox(),
-          SizedBox(
-            child: Column(
-              children: <Widget>[
-                Text(
-                  'JOHOR WHEELS',
-                  style: TextStyle(
-                      fontFamily: 'BebasNeue',
-                      color: Colors.white,
-                      fontSize: 100.0),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  'Johor Local Bus Route Finder',
-                  style: TextStyle(
-                      fontFamily: 'Campton',
-                      color: Colors.white,
-                      fontSize: 18.0),
-                  textAlign: TextAlign.center,
-                ),
-              ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            // IconButton(
+            //     onPressed: () {
+            //       Navigator.push(context,
+            //           MaterialPageRoute(builder: (context) => WelcomeScreen()));
+            //     },
+            //     icon: Icon(Icons.arrow_back_ios)),
+            SizedBox(),
+            SizedBox(
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    'JOHOR WHEELS',
+                    style: TextStyle(
+                        fontFamily: 'BebasNeue',
+                        color: Colors.white,
+                        fontSize: 100.0),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    'Johor Local Bus Route Finder',
+                    style: TextStyle(
+                        fontFamily: 'Campton',
+                        color: Colors.white,
+                        fontSize: 18.0),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
             ),
-          ),
-          child,
-        ],
+            child,
+          ],
+        ),
       ),
     );
   }

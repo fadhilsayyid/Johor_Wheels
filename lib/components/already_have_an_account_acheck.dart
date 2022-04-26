@@ -24,7 +24,7 @@ class AlreadyHaveAnAccountCheck extends StatelessWidget {
           child: Text(
             login ? "Sign Up" : "Sign In",
             style: TextStyle(
-                color: Color(0xFF2B8DAA),
+                color: kPrimaryColor,
                 fontSize: 13.0,
                 fontWeight: FontWeight.bold),
           ),
