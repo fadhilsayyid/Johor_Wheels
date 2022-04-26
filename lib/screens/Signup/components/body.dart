@@ -8,6 +8,7 @@ import 'package:johor_wheels/components/already_have_an_account_acheck.dart';
 import 'package:johor_wheels/components/rounded_button.dart';
 import 'package:johor_wheels/components/rounded_input_field.dart';
 import 'package:johor_wheels/components/rounded_password_field.dart';
+import 'package:johor_wheels/screens/Welcome/welcome_screen.dart';
 
 // ignore: must_be_immutable
 class Body extends StatelessWidget {
@@ -34,9 +35,11 @@ class Body extends StatelessWidget {
             ),
             RoundedButton(
               text: "SIGNUP",
-              press: () async {
-                await AuthServices.signUp(
+              press: () {
+                AuthServices.signUp(
                     emailController.text, passwordController.text);
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => WelcomeScreen()));
               },
             ),
             SizedBox(height: size.height * 0.03),
