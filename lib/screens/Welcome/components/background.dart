@@ -20,7 +20,9 @@ class Background extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          SizedBox(),
+          SizedBox(
+            height: 10,
+          ),
           SizedBox(
             child: Column(
               children: <Widget>[
