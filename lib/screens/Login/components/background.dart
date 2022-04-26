@@ -28,7 +28,9 @@ class Background extends StatelessWidget {
             //           MaterialPageRoute(builder: (context) => WelcomeScreen()));
             //     },
             //     icon: Icon(Icons.arrow_back_ios)),
-            SizedBox(),
+            SizedBox(
+              height: 20,
+            ),
             SizedBox(
               child: Column(
                 children: <Widget>[
@@ -50,6 +52,9 @@ class Background extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            SizedBox(
+              height: 50,
             ),
             child,
           ],
