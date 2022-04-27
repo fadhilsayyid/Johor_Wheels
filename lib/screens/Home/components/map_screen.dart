@@ -203,9 +203,12 @@ class _MapScreenState extends State<MapScreen> {
                   ),
                 ),
                 ListTile(
-                  onTap: () {},
-                  leading: Icon(Icons.account_circle_rounded),
-                  title: Text('Profile'),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MapScreen()));
+                  },
+                  leading: Icon(Icons.explore),
+                  title: Text('Explore'),
                 ),
                 ListTile(
                   onTap: () {},
