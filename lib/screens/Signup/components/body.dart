@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:johor_wheels/auth_services.dart';
 import 'package:johor_wheels/screens/Login/login_screen.dart';
@@ -9,6 +11,9 @@ import 'package:johor_wheels/components/rounded_button.dart';
 import 'package:johor_wheels/components/rounded_input_field.dart';
 import 'package:johor_wheels/components/rounded_password_field.dart';
 import 'package:johor_wheels/screens/Welcome/welcome_screen.dart';
+import 'package:provider/provider.dart';
+
+import '../../../services/auth_services.dart';
 
 // ignore: must_be_immutable
 class Body extends StatelessWidget {
@@ -34,12 +39,43 @@ class Body extends StatelessWidget {
               passwordController: passwordController,
             ),
             RoundedButton(
-              text: "SIGNUP",
+              text: "Sign up",
               press: () {
-                AuthServices.signUp(
-                    emailController.text, passwordController.text);
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => WelcomeScreen()));
+                final String email = emailController.text.trim();
+                final String password = passwordController.text.trim();
+
+                if (email.isEmpty) {
+                  print("Email is Empty");
+                } else {
+                  if (password.isEmpty) {
+                    print("Password is Empty");
+                  } else {
+                    context
+                        .read<AuthService>()
+                        .signUp(
+                          email,
+                          password,
+                          "user",
+                        )
+                        .then((value) async {
+                      User user = FirebaseAuth.instance.currentUser;
+
+                      await FirebaseFirestore.instance
+                          .collection("users")
+                          .doc(user.uid)
+                          .set({
+                        'uid': user.uid,
+                        'email': email,
+                        'password': password,
+                        'role': 'user',
+                      });
+                    });
+                  }
+                }
+                // AuthServices.signUp(
+                //     emailController.text, passwordController.text);
+                // Navigator.of(context).pushReplacement(
+                //     MaterialPageRoute(builder: (context) => WelcomeScreen()));
               },
             ),
             SizedBox(height: size.height * 0.03),
