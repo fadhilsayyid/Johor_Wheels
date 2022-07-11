@@ -14,7 +14,10 @@ class RoundedInputField extends StatelessWidget {
       this.hintText,
       this.icon = Icons.person,
       this.onChanged,
-      this.emailController})
+      this.emailController,
+      TextInputAction textInputAction,
+      AutovalidateMode autovalidateMode,
+      String Function(dynamic email) validator})
       : super(key: key);
 
   @override
