@@ -23,7 +23,7 @@ environment:
 dependencies:
   cloud_firestore: ^3.1.9
   cupertino_icons: ^1.0.2
-  dio: ^4.0.6
+  dio: ^5.2.0
   dotenv: ^3.0.0
   draggable_bottom_sheet: ^0.1.2
   email_validator: ^2.0.1
